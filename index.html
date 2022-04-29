@@ -20,9 +20,30 @@
                         return "Scissors";
                 }
             }
-            
-            console.log(computerPlay());
 
+            function capitalize(string) {
+                string = string.toLowerCase();
+                let firstLetter = string[0];
+                let capitalLetter = firstLetter.toUpperCase;
+                string = string.replace(firstLetter, firstLetter.toUpperCase());
+                return string;
+            }
+
+            function gameRound(computerSelection, playerSelection) {
+                playerSelection = capitalize(playerSelection)
+                if (computerSelection == playerSelection) {
+                    return "It's a tie! Try again.";
+                }
+                else if (computerSelection == "Rock" && playerSelection == "Scissors" || computerSelection == "Paper" && playerSelection =="Rock" || computerSelection == "Scissors" && playerSelection == "Paper") {
+                    return `You lose! ${computerSelection} beats ${playerSelection}.`;
+                }
+                else if (computerSelection == "Rock" && playerSelection == "Paper" || computerSelection == "Paper" && playerSelection == "Scissors" || computerSelection == "Scissors" && playerSelection == "Rock") {
+                    return `You win! ${playerSelection} beats ${computerSelection}.`;
+                }
+                else {
+                    return "Sorry, that's not a valid move. Please select rock, paper, or scissors and try again."
+                }
+            }
         </script>
     </body>
 </hmtl>
