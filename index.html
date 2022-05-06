@@ -5,6 +5,10 @@
         <title>Rock, Paper, Scissors</title>
     </head>
     <body>
+        <button class="rock">Rock</button>
+        <button class="paper">Paper</button>
+        <button class="scissors">Scissors</button>
+        <div class = "results"></div>
         <script>
             function getRndInteger(min, max) {
                 return Math.floor(Math.random() * (max - min + 1) ) + min;
@@ -45,35 +49,59 @@
                 }
             }
 
-            function game() {
-                let computerScore = 0;
-                let playerScore = 0;
-                for (let i = 0; i < 5; i++) {
-                    let playerMove = prompt("Choose your move! Rock, Paper or Scissors?");
-                    let round = gameRound(computerPlay(), playerMove);
-                    console.log(round);
-                    if (round[4] == "w") {
-                        ++playerScore;
-                    }
-                    else if (round[4] == "l") {
-                        ++computerScore;
-                    }
-                    else {
-                        console.log("error")
-                    }
-                    
-                    console.log(`Your score is: ${playerScore}. The computer's score is: ${computerScore}`);
+            //function game() {
+            //    let computerScore = 0;
+            //    let playerScore = 0;
+            //    for (let i = 0; i < 5; i++) {
+            //        let playerMove = prompt("Choose your move! Rock, Paper or Scissors?");
+            //        let round = gameRound(computerPlay(), playerMove);
+            //        console.log(round);
+            //        if (round[4] == "w") {
+            //           ++playerScore;
+            //        }
+            //        else if (round[4] == "l") {
+            //            ++computerScore;
+            //        }
+            //        else {
+            //            console.log("error")
+            //        }
+            //       
+            //        console.log(`Your score is: ${playerScore}. The computer's score is: ${computerScore}`);
+            //   }
+            //    if (computerScore < playerScore) {
+            //        console.log('You win the match! Congratulations!');
+            //    }
+            //    else if (computerScore > playerScore) {
+            //        console.log('The computer wins the match! Try again.')
+            //    }
+            //    else{
+            //        console.log("The match is a tie! Try again.")
+            //    }
+            //}
+            const rockBtn = document.querySelector(".rock");
+            const paperBtn = document.querySelector(".paper");
+            const scissorsBtn = document.querySelector(".scissors");
+            const results = document.querySelector(".results")
+
+            function playRound(e) {
+                const paras = document.createElement("p")
+                if (e.target.className === "rock") {
+                    paras.textContent = gameRound(computerPlay(), "Rock");
                 }
-                if (computerScore < playerScore) {
-                    console.log('You win the match! Congratulations!');
+                else if (e.target.className === "paper") {
+                    paras.textContent = gameRound(computerPlay(), "Paper");
                 }
-                else if (computerScore > playerScore) {
-                    console.log('The computer wins the match! Try again.')
+                else if (e.target.className === "scissors") {
+                    paras.textContent = gameRound(computerPlay(), "Scissors");                    
                 }
-                else{
-                    console.log("The match is a tie! Try again.")
-                }
+                results.appendChild(paras);
             }
+
+            rockBtn.addEventListener("click", playRound);
+
+            paperBtn.addEventListener("click", playRound);
+
+            scissorsBtn.addEventListener("click", playRound);
         </script>
     </body>
 </hmtl>
