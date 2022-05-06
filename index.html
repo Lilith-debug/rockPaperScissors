@@ -110,6 +110,21 @@
                 
                 results.appendChild(paras);
                 results.appendChild(paraScore);
+
+                if (computerScore === 4) {
+                    const paraGameEnd = document.createElement("p");
+                    paraGameEnd.textContent = 'The computer wins the match! Try again.';
+                    computerScore = 0;
+                    playerScore = 0;
+                    results.appendChild(paraGameEnd);
+                }
+                else if (playerScore === 4) {
+                    const paraGameEnd = document.createElement("p");
+                    paraGameEnd.textContent = 'You win the match! Congratulations!';
+                    computerScore = 0;
+                    playerScore = 0;
+                    results.appendChild(paraGameEnd);
+                    }
             }
 
             rockBtn.addEventListener("click", playRound);
