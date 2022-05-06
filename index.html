@@ -82,9 +82,12 @@
             const paperBtn = document.querySelector(".paper");
             const scissorsBtn = document.querySelector(".scissors");
             const results = document.querySelector(".results")
+            let computerScore = 0
+            let playerScore = 0
 
             function playRound(e) {
                 const paras = document.createElement("p")
+                const paraScore = document.createElement("p")
                 if (e.target.className === "rock") {
                     paras.textContent = gameRound(computerPlay(), "Rock");
                 }
@@ -94,7 +97,19 @@
                 else if (e.target.className === "scissors") {
                     paras.textContent = gameRound(computerPlay(), "Scissors");                    
                 }
+
+                if (paras.textContent[4] ==="l") {
+                    computerScore += 1;
+
+                }
+                else if (paras.textContent[4] ==="w") {
+                    playerScore += 1;
+                }
+
+                paraScore.textContent = `Your score is: ${playerScore}. The computer's score is: ${computerScore}`;
+                
                 results.appendChild(paras);
+                results.appendChild(paraScore);
             }
 
             rockBtn.addEventListener("click", playRound);
